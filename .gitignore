@@ -1,0 +1,5 @@
+*~
+*.cfg
+*.ipynb_checkpoints
+*.parquet
+*.parquet.crc

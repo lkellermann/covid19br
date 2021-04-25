@@ -1,0 +1,27 @@
+'''
+ * Filename: /home/kellermann/git_repo/covid19br/.vscode/launch.json
+ * Path: /home/kellermann/git_repo/covid19br/.vscode
+ * Created Date: Wednesday, April 21st 2021, 4:03:09 pm
+ * Author: Leandro Kellermann de Oliveira
+ * 
+ * Copyright (c) 2021 myProjects
+'''
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "git_repo:lake.quality_check_parquet (python3.7)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/",
+                "lambdaHandler": "lake.quality_check_parquet"
+            },
+            "lambda": {
+                "runtime": "python3.7",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}

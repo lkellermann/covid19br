@@ -1,0 +1,234 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+# https://app.quickdatabasediagrams.com/#/
+
+Notification as a
+-------
+notification_id bigint PK
+DT_NOTIFIC string
+SEM_NOT int 
+DT_SIN_PRI string 
+SEM_PRI int 
+SG_UF_NOT string 
+ID_REGIONA string
+CO_REGIONA int 
+ID_MUNICIP string 
+CO_MUN_NOTint 
+ID_UNIDADE string 
+CO_UNI_NOT int 
+CS_SEXO string
+DT_NASC string 
+NU_IDADE_N int 
+TP_IDADE int 
+COD_IDADE string
+CS_GESTANT int
+CS_RACA int
+CS_ETINIA string
+CS_ESCOL_N int 
+ID_PAIS string 
+CO_PAIS int 
+SG_UF string 
+ID_RG_RESI string 
+CO_RG_RESI int 
+ID_MN_RESI string
+CO_MUN_RES int 
+CS_ZONA int 
+SURTO_SG int 
+NOSOCOMIAL int 
+AVE_SUINO int 
+FEBRE int 
+TOSSE int
+GARGANTA int 
+DISPNEIA int 
+DESC_RESP int 
+SATURACAO int 
+DIARREIA int 
+VOMITO int 
+OUTRO_SIN int
+OUTRO_DES string 
+PUERPERA int 
+FATOR_RISC string 
+CARDIOPATI int 
+HEMATOLOGI int 
+SIND_DOWN int 
+HEPATICA int
+ASMA int 
+DIABETES int 
+NEUROLOGIC int 
+PNEUMOPATI int 
+IMUNODEPRE int 
+RENAL int 
+OBESIDADE int
+OBES_IMC string 
+OUT_MORBI int 
+MORB_DESC string 
+VACINA int 
+DT_UT_DOSE string 
+MAE_VAC int 
+DT_VAC_MAE string
+M_AMAMENTA int 
+DT_DOSEUNI string 
+DT_1_DOSE string 
+DT_2_DOSE string 
+ANTIVIRAL int 
+TP_ANTIVIR int
+OUT_ANTIV string 
+DT_ANTIVIR string 
+HOSPITAL string 
+DT_INTERNA string 
+SG_UF_INTE string 
+ID_RG_INTE string
+CO_RG_INTE int 
+ID_MN_INTE string 
+CO_MU_INTE int 
+UTI int 
+DT_ENTUTI string 
+DT_SAIDUTI string
+SUPORT_VEN int 
+RAIOX_RES int 
+RAIOX_OUT string 
+DT_RAIOX string 
+AMOSTRA int 
+DT_COLETA string
+TP_AMOSTRA int 
+OUT_AMOST string 
+PCR_RESUL int 
+DT_PCR string 
+POS_PCRFLU int 
+TP_FLU_PCR int
+PCR_FLUASU int 
+FLUASU_OUT string 
+PCR_FLUBLI int
+FLUBLI_OUT string 
+POS_PCROUT int 
+PCR_VSR int
+PCR_PARA1 int 
+PCR_PARA2 int 
+PCR_PARA3 int 
+PCR_PARA4 int 
+PCR_ADENO int 
+PCR_METAP int 
+PCR_BOCA int
+PCR_RINO int 
+PCR_OUTRO int 
+DS_PCR_OUT string 
+CLASSI_FIN int 
+CLASSI_OUT string 
+CRITERIO string
+EVOLUCAO string 
+DT_EVOLUCA string 
+DT_ENCERRA string 
+DT_DIGITA string 
+HISTO_VGM int 
+PAIS_VGM string
+CO_PS_VGM int 
+LO_PS_VGM string 
+DT_VGM string 
+DT_RT_VGM string 
+PCR_SARS2 int 
+PAC_COCBO string
+PAC_DSCBO string 
+OUT_ANIM string 
+DOR_ABD int 
+FADIGA  int 
+PERD_OLFT int 
+PERD_PALA int 
+TOMO_RES string
+TOMO_OUT string 
+DT_TOMO string 
+TP_TES_AN int 
+DT_RES_AN string 
+RES_AN int 
+POS_AN_FLU int 
+TP_FLU_AN int
+POS_AN_OUT int 
+AN_SARS2 int 
+AN_VSR int 
+AN_PARA1 int 
+AN_PARA2 int 
+AN_PARA3 int 
+AN_ADENO int
+AN_OUTRO int 
+DS_AN_OUT string 
+TP_AM_SOR int 
+SOR_OUT string 
+DT_CO_SOR string 
+TP_SOR int
+OUT_SOR string 
+DT_RES string 
+RES_IGG int 
+RES_IGM int 
+RES_IGA int
+
+
+illness as b
+-----
+notification_id bigint  PK FK - characteristics.notification_id
+dt_notification date
+fl_covid19 boolean
+fl_fever boolean
+fl_dyspnoea boolean
+fl_breath_probl boolean
+fl_o2_sat boolean
+fl_diarr boolean
+fl_vomit boolean
+fl_abd_pain boolean
+fl_fatig boolean
+fl_smell_loss boolean
+fl_taste_loss boolean
+fl_risc boolean
+fl_hospitalized boolean
+fl_icu boolean
+fl_int_trip boolean
+res_covid19_test int
+
+geographic_info as c
+---
+key string PK
+key_2 string FK UNIQUE
+key_3 string UNIQUE
+fed_unit string
+fu_code int
+uf_name string
+city_name string
+city_code int 
+latitude float
+longitude float
+location_area real
+location_perimeter real
+pop_est int
+
+characteristics as d
+---
+notification_id bigint pk FK - Notification.notification_id
+dt_notification date
+fl_covid19 boolean
+res_covid19_test
+id_healt_unit string FK >- health_units.id_health_unit
+cod_sex string
+dt_birth date
+qrt_pregnant int
+cod_race int
+cod_schooling int
+cod_profession int
+cod_country_hab int
+key_city_not string FK >- geographic_info.key_3
+nm_fed_unit_not string
+nm_city_not string
+latitude float
+longitude float
+location_area real
+location_perimeter real
+pop_est int
+
+health_units as c
+---
+id_health_unit int pk
+nm_health_unit string
+nm_city int
+id_city int
+id_region int
+nm_region int
+
+
